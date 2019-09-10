@@ -49,10 +49,6 @@ module.exports = function (env) {
             }),
         ],
         resolve: {
-            modules: [
-                path.resolve('./node_modules'),
-                path.join(__dirname, '..', 'frontend')
-            ],
             extensions: ['.js', '.jsx']
         }
     };

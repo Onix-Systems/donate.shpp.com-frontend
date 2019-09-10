@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
-const App = () => {
-    return (
-        <div>
-            App
-        </div>
-    );
-};
+import App from './App';
 
-ReactDOM.render(
-    <App />,
+ReactDOM.hydrate(
+    <Router><App /></Router>,
     document.getElementById('root')
 );
