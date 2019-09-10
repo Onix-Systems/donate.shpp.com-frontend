@@ -4,9 +4,12 @@ import path from 'path';
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter, matchPath} from 'react-router-dom';
+import promiseFinally from 'promise.prototype.finally';
 
 import routes from '../frontend/routes';
 import App from '../frontend/App';
+
+promiseFinally.shim();
 
 const app = express();
 app.use(express.static('dist'));
