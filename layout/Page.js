@@ -22,8 +22,10 @@ const Layout = ({ children }) => (
         box-sizing: inherit;
       }
       .wrapper {
-        min-height: 100%;
+        min-height: 100vh;
         margin: 0 auto -100px; 
+        display: flex;
+        flex-direction: column;
       }
     `}
     </style>

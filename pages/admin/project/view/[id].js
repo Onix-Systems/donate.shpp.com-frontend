@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Card, Container, Row } from 'react-bootstrap';
 import Page from '../../../../layout/admin/Page';
@@ -6,7 +5,7 @@ import colors from '../../../../theme/colors';
 import ProgressBar from '../../../../components/ProgressBar';
 import ProjectTransactions from '../../../../components/ProjectTransactions';
 import withAuth from '../../../../layout/admin/HOC/withAuth';
-import { PROJECTS_LIST, TRANSACTIONS_LIST } from '../../../../utils/api_urls';
+import { PROJECTS_LIST, TRANSACTIONS_LIST } from '../../../../utils/apiUrls';
 import { fetchDataGet } from '../../../../utils/fetchData';
 
 

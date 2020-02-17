@@ -3,6 +3,7 @@ import fetch from 'isomorphic-unfetch';
 import Page from '../layout/Page';
 import ProjectCard from '../components/ProjectCard';
 
+
 const styles = {
   container: {
     maxWidth: '85%',
@@ -49,15 +50,14 @@ const HomePage = (props) => {
               padding: 30px 30px 0 !important;
             }
           }
-          
           @media screen and (max-width: 768px){
             .homepage {
               padding: 20px 20px 0!important;
               justify-content: center;
             }
           }
-      `
-}
+        `
+        }
       </style>
     </Page>
   );

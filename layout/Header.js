@@ -66,7 +66,7 @@ class Header extends React.Component {
     this.setState((prevState) => {
       return { isMenuExpanded: !prevState.isMenuExpanded };
     });
-  }
+  };
 
   render() {
     const { isMenuExpanded } = this.state;
@@ -121,46 +121,46 @@ class Header extends React.Component {
         </div>
         <style jsx>
           {
-          `@media screen and (max-width: 1240px){
-            .logo{
-              line-height: 50px !important;
-              font-size: 40px !important;
+            `@media screen and (max-width: 1240px){
+              .logo{
+                line-height: 50px !important;
+                font-size: 40px !important;
+              }
             }
+            
+            @media screen and (max-width: 768px){
+              .nav-list{
+                display: ${isMenuExpanded ? 'flex' : 'none'} !important;
+                padding-left: 0;
+                margin: 0;
+              }
+              
+              .site-header{
+                justify-content: space-between !important;
+                padding: 5px 10px !important;
+              }
+              
+              .burger-wrapper{
+                display: block !important;
+              }
+            }
+            
+            @media screen and (max-width: 460px){
+              .logo__slash{
+                margin 0 5px !important;
+              }
+              
+              .logo{
+                line-height: 40px !important;
+                font-size: 30px !important;
+              }
+              
+              .list-item{
+                padding: 5px !important;
+              }
+            }
+          `
           }
-          
-          @media screen and (max-width: 768px){
-            .nav-list{
-              display: ${isMenuExpanded ? 'flex' : 'none'} !important;
-              padding-left: 0;
-              margin: 0;
-            }
-            
-            .site-header{
-              justify-content: space-between !important;
-              padding: 5px 10px !important;
-            }
-            
-            .burger-wrapper{
-              display: block !important;
-            }
-          }
-          
-          @media screen and (max-width: 460px){
-            .logo__slash{
-              margin 0 5px !important;
-            }
-            
-            .logo{
-              line-height: 40px !important;
-              font-size: 30px !important;
-            }
-            
-            .list-item{
-              padding: 5px !important;
-            }
-          }
-      `
-}
         </style>
       </header>
     );

@@ -16,13 +16,15 @@ const SocialIcon = ({ children, link }) => {
             border-radius: 15%;
             display: flex;
             justify-content: center;
-            align-items: center;        
+            align-items: center; 
+            margin: 10px;            
           }
           a {
-            cursor: pointer;
+            cursor: pointer;             
           }
           div:hover {
             border: 1px solid ${theme.green};
+            transition: all 0.2s;  
           }
           `
         }

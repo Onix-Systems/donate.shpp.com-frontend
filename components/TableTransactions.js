@@ -1,9 +1,7 @@
 import { Card, Table, Container } from 'react-bootstrap';
 import Link from 'next/link';
 
-/* eslint-disable no-console */
 const TableTransactions = ({ transactions, fullTable }) => {
-  console.log(transactions);
   return (
     <Container>
       <Card>

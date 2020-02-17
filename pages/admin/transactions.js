@@ -1,18 +1,15 @@
 import Page from '../../layout/admin/Page';
-import { PROJECTS_LIST, TRANSACTIONS_LIST } from '../../utils/api_urls';
+import { PROJECTS_LIST, TRANSACTIONS_LIST } from '../../utils/apiUrls';
 import { fetchDataGet } from '../../utils/fetchData';
 import TableTransactions from '../../components/TableTransactions';
-import mockTransactions from '../../mock/transactions'; // TODO: replace with 'transaction' after api got fixed
 import withAuth from '../../layout/admin/HOC/withAuth';
 
-/* eslint-disable no-console */
 const transactions = ({ namedTransactions }) => {
-  console.log(namedTransactions);
   return (
     <Page>
       <h1 className="text-center">Транзакції</h1>
       <TableTransactions
-        transactions={mockTransactions}
+        transactions={namedTransactions}
         fullTable
       />
     </Page>

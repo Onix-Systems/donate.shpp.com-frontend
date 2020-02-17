@@ -4,7 +4,7 @@ import { Container, Col, Button } from 'react-bootstrap';
 import Page from '../../../../layout/admin/Page';
 import withAuth from '../../../../layout/admin/HOC/withAuth';
 import { fetchDataPost } from '../../../../utils/fetchData';
-import { REAFFIRM_TRANSACTION, REVOKE_TRANSACTION } from '../../../../utils/api_urls';
+import { REAFFIRM_TRANSACTION, REVOKE_TRANSACTION } from '../../../../utils/apiUrls';
 import ModalComponent from '../../../../components/Modal';
 
 const style = {
@@ -60,7 +60,7 @@ const TransactionView = ({ transaction }) => {
     <Page>
       <ModalComponent
         showModal={showModal}
-        dhandleClose={handleClose}
+        handleClose={handleClose}
       />
       <Container className="mt-5" style={style}>
         <Col className="col-8 mx-auto text-center">

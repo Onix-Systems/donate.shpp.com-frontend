@@ -6,7 +6,7 @@ import {
 import Page from '../../../layout/admin/Page';
 import withAuth from '../../../layout/admin/HOC/withAuth';
 import { fetchDataPost } from '../../../utils/fetchData';
-import { CREATE_TRANSACTION } from '../../../utils/api_urls';
+import { CREATE_TRANSACTION } from '../../../utils/apiUrls';
 import ModalComponent from '../../../components/Modal';
 
 const style = {
@@ -27,6 +27,7 @@ const AddTransaction = ({ id }) => {
       isSuccess: false,
     },
   );
+
   const handleClose = () => {
     Router.back();
     setShowModal({ show: false });

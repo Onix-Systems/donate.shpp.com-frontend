@@ -8,7 +8,7 @@ import Page from '../../../../layout/admin/Page';
 import Editor from '../../../../components/Editor';
 import { fetchDataPost } from '../../../../utils/fetchData';
 import withAuth from '../../../../layout/admin/HOC/withAuth';
-import { UPDATE_PROJECT } from '../../../../utils/api_urls';
+import { UPDATE_PROJECT } from '../../../../utils/apiUrls';
 import ModalComponent from '../../../../components/Modal';
 
 const AdminProjectEdit = (defaultProject) => {

@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import { useEffect, useState } from 'react';
 
 /**
  * HOC to wrap admin pages with auth component
@@ -6,26 +7,21 @@ import Router from 'next/router';
 /* eslint-disable react/jsx-props-no-spreading */
 export default function WithAuth(WrappedComponent) {
   const ProtectedComponent = (props) => {
-    return <WrappedComponent {...props} />;
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+      if (!sessionStorage.getItem('token')) {
+        Router.push('/admin/login');
+      } else {
+        setLoading(true);
+      }
+    }, []);
+
+    return loading && <WrappedComponent {...props} />;
   };
 
   ProtectedComponent.getInitialProps = async (ctx) => {
     const componentProps = WrappedComponent.getInitialProps && (await WrappedComponent.getInitialProps(ctx));
-    const logged = true; // TODO: check localstorage if user loggedIn
-
-    const redirect = () => {
-      if (process.browser) {
-        Router.push('/admin/login');
-      } else {
-        ctx.res.writeHead(302, { Location: '/admin/login' });
-        ctx.res.end();
-      }
-    };
-
-    if (!logged) {
-      redirect();
-    }
-
     return { ...componentProps };
   };
 

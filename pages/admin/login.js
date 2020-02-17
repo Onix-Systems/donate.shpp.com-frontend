@@ -1,21 +1,32 @@
-/* eslint-disable no-console */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Router from 'next/router';
 import {
   Button, Col, Container, Form, Row,
 } from 'react-bootstrap';
 import Page from '../../layout/admin/Page';
-import createToken from '../../utils/createToken';
 
 const Login = () => {
   const [pass, setPass] = useState('');
+  const [error, setError] = useState();
+
+  useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      Router.push('/admin/projects');
+    }
+  }, []);
+
   const handleChange = ({ target }) => {
     setPass(target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createToken(pass);
-    console.log(localStorage.getItem('token'));
+    if (pass === process.env.PASS) {
+      sessionStorage.setItem('token', process.env.AUTH_TOKEN);
+      Router.push('/admin/projects');
+    } else {
+      setError(true);
+    }
   };
   return (
     <Page>
@@ -27,7 +38,13 @@ const Login = () => {
               onSubmit={handleSubmit}
             >
               <Form.Group>
-                <Form.Control name="password" type="password" placeholder="пароль..." onChange={handleChange} />
+                <Form.Control
+                  isInvalid={error}
+                  name="password"
+                  type="password"
+                  placeholder="пароль..."
+                  onChange={handleChange}
+                />
               </Form.Group>
               <Button className="btn-success" type="submit">Увійти</Button>
             </Form>

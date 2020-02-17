@@ -17,7 +17,6 @@ const style = {
   },
 };
 
-
 const ModalComponent = ({ handleClose, showModal: { show, isSuccess, error } }) => {
   const successInfo = <h3 style={style.success}>Операція успішна</h3>;
   const failInfo = (

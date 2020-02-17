@@ -10,7 +10,6 @@ import Visa from '../assets/vbv.svg';
 import SocialIcon from '../components/SocialIcon';
 import theme from '../theme/colors';
 
-
 const style = {
   iconSmall: {
     width: '20px',
@@ -96,6 +95,7 @@ Icons made by&nbsp;
          `
          .footer {
            display: flex;
+           margin-top: auto;
          }
          .container {
            border-top: 1px solid ${theme.green};
@@ -105,33 +105,40 @@ Icons made by&nbsp;
            display: flex;
            justify-content: space-between;
          }    
+         @media screen and (max-width: 768px){
+           .container {
+             flex-direction: column;
+           }
+         }
          section {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;   
-          padding: 0 10px;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;   
+           padding: 10px;
          }     
          article {
-          display: flex;
+           display: flex;
+           margin-bottom: 10px;
          }
          a {
-          text-decoration: underline;
-          color: ${theme.text};
-          font-size: 16px;
+           text-decoration: underline;
+           color: ${theme.text};
+           font-size: 16px;
+           transition: all 0.3s;
          }
          a:hover {
-          color: ${theme.green};
-          text-decoration: none;
+           color: ${theme.green};
+           text-decoration: none;        
          }
          .flaticon_link, .flaticon_link a {
-          font-size: 10px;                 
+           font-size: 10px;                 
          }
          i { 
-          margin-right: 10px;
+           margin-right: 10px;
          }
          .social {          
-            display: flex;
-            justify-content: space-between;
+           display: flex;
+           justify-content: flex-start;
          }                 
          `
        }

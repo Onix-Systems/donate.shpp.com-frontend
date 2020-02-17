@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Card, Container, Table } from 'react-bootstrap';
 import Page from '../../layout/admin/Page';
 import withAuth from '../../layout/admin/HOC/withAuth';
-import { PROJECTS_LIST } from '../../utils/api_urls';
+import { PROJECTS_LIST } from '../../utils/apiUrls';
 import { fetchDataGet } from '../../utils/fetchData';
 
 
