@@ -6,16 +6,6 @@ import placeholderData from '../mock/placeholderData';
 import colors from '../theme/colors';
 
 const styles = {
-  wrapper: {
-    margin: '0 15px 50px',
-    width: 'calc(100%/3 - 30px)',
-    maxWidth: '540px',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: colors.white,
-    transition: '0.3s',
-    boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
-  },
   infoWrapper: {
     padding: '10px',
     display: 'flex',
@@ -41,7 +31,7 @@ class ProjectCard extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { project } = this.props;
     const prefix = 'https://cors-anywhere.herokuapp.com/'; // TODO: Remove when CORS will be fixed
     fetch(`${prefix}https://back.donate.2.shpp.me/api/v1/projects/button?id=${project._id}`)
@@ -57,13 +47,13 @@ class ProjectCard extends React.Component {
       form.setAttribute('target', '_blank');
       form.submit();
     }
-  }
+  };
 
   render() {
     const { project } = this.props;
     const { button } = this.state;
     return (
-      <div style={styles.wrapper} className="card">
+      <div className="card">
         <Link href="/projects/[id]" as={`/projects/${project._id}`}>
           <img
             src={project.image || placeholderData.imagePlaceholder}
@@ -107,9 +97,6 @@ class ProjectCard extends React.Component {
               />
             </div>
           )}
-          {/* <div style={styles.publishedAt}> */}
-          {/*   {`опубліковано ${new Date(project.creationTime).toLocaleDateString("ua-UA")}`} */}
-          {/* </div> */}
         </div>
         <style jsx>
           {
@@ -119,36 +106,29 @@ class ProjectCard extends React.Component {
             }
             .card:hover h3{
               color: ${colors.green};
-            }
-            
-            /* TODO: need to test display:none form submit in old browsers */
+            }                     
             .liqpay-form {
               display: none;
-            }
-            
+            }            
             .project-image {
               height: 150px;
               object-fit: cover;
               margin: 0 0 10px;
               width: 100%;
               cursor: pointer;
-            }
-            
+            }            
             .project-title {
               margin: 5px 0;
               cursor: pointer;
-            }
-            
+            }            
             .button-wrapper {
               padding: 25px 0 15px;
               text-align: center;
-            }
-            
+            }            
             .funded-text {
               margin-bottom: 5px;
               display: inline-block;
-            }
-            
+            }            
             .submit-button {
               background-color: ${colors.green};
               color: ${colors.white};
@@ -157,25 +137,30 @@ class ProjectCard extends React.Component {
               font-size: 20px;
               display: inline-block;
               cursor: pointer;
-            }
-          
+            }            
+            .card{
+              margin: 0 15px 50px;
+              width: calc(100%/3 - 30px);
+              max-width: 540px;
+              display: flex;
+              flex-direction: column;
+              background-color: ${colors.white};
+              transition: 0.3s;
+              box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            }                     
             @media screen and (max-width: 1240px){
               .card{
-                margin: 0 15px 40px !important;
-                width: calc(100%/2 - 30px) !important;
+                margin: 0 15px 40px;
+                width: calc(100%/2 - 30px);
               }
-            }   
-            
+            }         
             @media screen and (max-width: 768px){
               .card{
-                margin: 0 0 30px !important;
-                width: 100% !important;
+                margin: 0 0 30px;
+                width: 100%;
               }
             }
-            
-            @media screen and (max-width: 460px){
-    
-            }`
+            `
           }
         </style>
       </div>

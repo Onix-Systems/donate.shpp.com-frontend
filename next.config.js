@@ -1,3 +1,4 @@
+
 module.exports = {
   distDir: '_next',
   pageExtensions: ['jsx', 'js'],
@@ -8,6 +9,11 @@ module.exports = {
       return `${new Date().getTime()}`;
     }
   },
+  env: {
+    AUTH_TOKEN: '',
+    PASS: '',
+
+  },
   serverRuntimeConfig: {},
   publicRuntimeConfig: {
     DEPLOY_ENV: process.env.DEPLOY_ENV,
@@ -15,3 +21,5 @@ module.exports = {
     USE_COGNITO: process.env.USE_COGNITO,
   },
 };
+
+

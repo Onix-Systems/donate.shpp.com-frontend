@@ -1,7 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import Router from 'next/router';
 import Page from '../../layout/admin/Page';
 import colors from '../../theme/colors';
+import { fetchDataPost } from '../../utils/fetchData';
+import withAuth from '../../layout/admin/HOC/withAuth';
+import { CREATE_PROJECT, UPDATE_PROJECT } from '../../utils/apiUrls';
+import ModalComponent from '../../components/Modal';
 
 const styles = {
   form: {
@@ -10,12 +16,38 @@ const styles = {
 };
 
 const AdminAddProjectPage = () => {
-  const onSubmit = (event) => {
+  const [showModal, setShowModal] = useState(
+    {
+      show: false,
+      isSuccess: false,
+    },
+  );
+
+  const handleShowModal = (control) => setShowModal(control);
+
+  const handleClose = () => {
+    Router.back();
+    setShowModal({ show: false });
+  };
+  const handleResponse = (response) => {
+    if (response.success) {
+      handleShowModal({
+        show: true,
+        isSuccess: true,
+      });
+    } else {
+      handleShowModal({
+        show: true,
+        isSuccess: false,
+        error: response.error,
+      });
+    }
+  };
+  const onSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.elements.projectName.value;
 
-    // eslint-disable-next-line
     const newProject = {
       id: '',
       name,
@@ -26,12 +58,20 @@ const AdminAddProjectPage = () => {
       actual_spendings: '',
     };
 
-    // call project create request (only name needed)
-    // then call update project request using just created project from response to add all other data
+    // send request to createURL with just name of new project and receive back it's id
+    const getNewProjectId = await fetchDataPost(encodeURI(`name=${name}`), CREATE_PROJECT);
+    newProject.id = await getNewProjectId.project_id;
+    // send request to updateURL with new project data
+    const result = await fetchDataPost(new URLSearchParams(newProject).toString(), UPDATE_PROJECT);
+    handleResponse(result);
   };
 
   return (
     <Page>
+      <ModalComponent
+        showModal={showModal}
+        handleClose={handleClose}
+      />
       <div className="container">
         <h1 className="form-title">
           Створити проект
@@ -85,4 +125,4 @@ const AdminAddProjectPage = () => {
   );
 };
 
-export default AdminAddProjectPage;
+export default withAuth(AdminAddProjectPage);
